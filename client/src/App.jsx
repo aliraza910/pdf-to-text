@@ -48,7 +48,7 @@ function App() {
     formData.append('pdf', file);
 
     try {
-      const response = await fetch('http://localhost:5000/api/ocr/upload', {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/ocr/upload`, {
         method: 'POST',
         body: formData,
       });
@@ -69,7 +69,7 @@ function App() {
             const imageFormData = new FormData();
             imageFormData.append('pdf', images[i], `page-${i + 1}.jpg`);
             
-            const imgResponse = await fetch('http://localhost:5000/api/ocr/upload', {
+            const imgResponse = await fetch(`${import.meta.env.VITE_API_URL}/api/ocr/upload`, {
               method: 'POST',
               body: imageFormData,
             });
